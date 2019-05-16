@@ -1,0 +1,13 @@
+FROM python:3.7
+
+ENV ARTIFACTS_ROOT /tmp/output
+ENV TESTS_OUTPUT $ARTIFACTS_ROOT/test-reports
+
+RUN pip3 install --upgrade \
+        awscli \
+        xmlrunner
+
+RUN mkdir -p $TESTS_OUTPUT
+RUN cd $TESTS_OUTPUT
+RUN echo $ARTIFACTS_ROOT > $ARTIFACTS_ROOT/_BUILD_ARTIFACTS_GO_HERE_
+RUN echo $TESTS_OUTPUT > $TESTS_OUTPUT/_SAVED_OUTPUT_GOES_HERE_
